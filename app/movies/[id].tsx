@@ -44,13 +44,16 @@ const MovieDetails = () => {
 
   useEffect(() => {
     const checkSaved = async () => {
+      if (!movie) return;
+
       const movies = await getMovies();
-      if (movies?.some((movie: SavedMovie) => movie.id === movie.id)) {
-        setIsSaved(true);
-      }
+      const saved = movies?.some((m: SavedMovie) => m?.id === movie?.id);
+
+      setIsSaved(saved || false);
     };
+
     checkSaved();
-  }, [id]);
+  }, [movie]);
 
   const handleSave = async () => {
     if (movie) {
@@ -87,12 +90,12 @@ const MovieDetails = () => {
           />
           <TouchableOpacity
             onPress={handleSave}
-            className="absolute top-2 right-2"
+            className="absolute top-2 right-5"
           >
             {isSaved ? (
-              <Image source={icons.saved} className="w-10 h-16" />
+              <Image source={icons.saved} className="w-10 h-14" />
             ) : (
-              <Image source={icons.save} className="w-10 h-16" />
+              <Image source={icons.save} className="w-10 h-14" />
             )}
           </TouchableOpacity>
           <View className="flex-col items-start justify-center mt-5 px-5">

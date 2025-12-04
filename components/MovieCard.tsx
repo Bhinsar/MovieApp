@@ -5,7 +5,10 @@ import { Link } from "expo-router";
 import React, { useEffect } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
-const MovieCard = (props: SavedMovie) => {
+const MovieCard = ({
+  className,
+  ...props
+}: SavedMovie & { className?: string }) => {
   const [isSaved, setIsSaved] = React.useState(false);
 
   const { id, title, poster_path, release_date, vote_average } = props;
@@ -28,7 +31,7 @@ const MovieCard = (props: SavedMovie) => {
 
   return (
     <Link href={`/movies/${id}`} asChild>
-      <TouchableOpacity className="w-[30%]">
+      <TouchableOpacity className={`w-[30%] ${className}`}>
         <Image
           source={{
             uri: poster_path

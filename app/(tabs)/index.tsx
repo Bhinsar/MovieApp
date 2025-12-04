@@ -56,13 +56,7 @@ export default function Index() {
   const renderHeader = () => (
     <View>
       <Image source={icons.logo} className="w-12 h-10 mt-20 mb-5 mx-auto" />
-      {trendingMoviesLoading ? (
-        <ActivityIndicator
-          size="large"
-          color="#0000ff"
-          className="mt-10 self-center"
-        />
-      ) : trendingMoviesError ? (
+      {trendingMoviesError ? (
         <Text className="text-white text-center mt-10">
           Error loading trending movies
         </Text>

@@ -7,15 +7,22 @@
     "icon": "./assets/images/logo.png",
     "scheme": "movies",
     "userInterfaceStyle": "automatic",
+    "backgroundColor": "#030014",
     "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#030014"
+    },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#030014",
         "foregroundImage": "./assets/images/logo.png"
       },
+      "package": "com.anonymous.MovieApp"
     },
     "web": {
       "bundler": "metro",
@@ -30,9 +37,9 @@
           "image": "./assets/images/logo.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "#030014",
           "dark": {
-            "backgroundColor": "#000000"
+            "backgroundColor": "#030014"
           }
         }
       ]
