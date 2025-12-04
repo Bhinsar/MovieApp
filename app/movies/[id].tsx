@@ -1,9 +1,10 @@
 import { icons } from "@/constants/icons";
 import useFetch from "@/hooks/useFetch";
 import { fetchMovieDetails } from "@/services/api";
+import { getMovies, removeMovie, saveMovie } from "@/services/storage";
 import { formatDuration, formatReleaseDate } from "@/utils/helper";
 import { router, useLocalSearchParams } from "expo-router";
-import React from "react";
+import React, { useEffect } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 interface MovieInfoProps {
@@ -33,11 +34,42 @@ const Card = ({ label }: { label: React.ReactNode }) => {
 
 const MovieDetails = () => {
   const { id } = useLocalSearchParams();
+  const [isSaved, setIsSaved] = React.useState(false);
+
   const {
     data: movie,
     loading,
     error,
   } = useFetch(() => fetchMovieDetails({ id: id as string }));
+
+  useEffect(() => {
+    const checkSaved = async () => {
+      const movies = await getMovies();
+      if (movies?.some((movie: SavedMovie) => movie.id === movie.id)) {
+        setIsSaved(true);
+      }
+    };
+    checkSaved();
+  }, [id]);
+
+  const handleSave = async () => {
+    if (movie) {
+      if (!isSaved) {
+        await saveMovie({
+          id: movie.id,
+          title: movie.title,
+          poster_path: movie?.poster_path || "",
+          release_date: movie.release_date,
+          vote_average: movie.vote_average,
+        });
+        setIsSaved(!isSaved);
+      } else {
+        await removeMovie(movie.id);
+        setIsSaved(!isSaved);
+      }
+      setIsSaved(!isSaved);
+    }
+  };
   return (
     <View className="flex-1 bg-primary">
       <ScrollView
@@ -53,6 +85,16 @@ const MovieDetails = () => {
             className="w-full h-[550px]"
             resizeMode="stretch"
           />
+          <TouchableOpacity
+            onPress={handleSave}
+            className="absolute top-2 right-2"
+          >
+            {isSaved ? (
+              <Image source={icons.saved} className="w-10 h-16" />
+            ) : (
+              <Image source={icons.save} className="w-10 h-16" />
+            )}
+          </TouchableOpacity>
           <View className="flex-col items-start justify-center mt-5 px-5">
             <Text className="text-white text-xl font-bold">{movie?.title}</Text>
             <View className="flex-row items-center gap-2 mt-2 mb-4">
@@ -138,7 +180,7 @@ const MovieDetails = () => {
         <Text className="text-white text-lg font-bold ">Visit Home</Text>
         <Image
           source={icons.arrow}
-          className="size-5 mr-1 mt-0.5"
+          className="w-5 h-6 mr-1 mt-0.5"
           tintColor={"#fff"}
         />
       </TouchableOpacity>
