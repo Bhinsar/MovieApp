@@ -58,6 +58,7 @@ const Search = () => {
                 placeholder="Search movies, series, etc."
                 value={searchQuery}
                 onChangeText={(text: string) => setSearchQuery(text)}
+                autoFocus
               />
             </View>
             {!moviesLoading &&

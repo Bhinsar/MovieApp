@@ -22,17 +22,23 @@ const MovieCard = ({
           className="w-full h-52 rounded-lg"
           resizeMode="cover"
         />
-        <Text className="text-white mt-2 text-sm font-bold" numberOfLines={1}>{title}</Text>
+        <Text className="text-white mt-2 text-sm font-bold" numberOfLines={1}>
+          {title}
+        </Text>
         <View className="flex-row items-center justify-start gap-x-1">
           <Image source={icons.star} className="size-4" />
-          <Text className="text-white text-sx font-bold uppercase">{Math.round(vote_average/2)}</Text>
+          <Text className="text-white text-xs font-bold uppercase">
+            {Math.round(vote_average)}
+          </Text>
         </View>
         <View className="flex-row items-center justify-between">
-            <Text className="text-light-200 text-xs font-medium mt-1">{release_date?.split("-")[0]}</Text>
+          <Text className="text-light-200 text-xs font-medium mt-1">
+            {release_date?.split("-")[0]}
+          </Text>
         </View>
       </TouchableOpacity>
     </Link>
   );
 };
 
-export default MovieCard;
+export default React.memo(MovieCard);

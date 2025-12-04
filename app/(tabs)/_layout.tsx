@@ -3,6 +3,7 @@ import { images } from "@/constants/images";
 import { Tabs } from "expo-router";
 import React from "react";
 import { Image, ImageBackground, Text, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const TabBarIcon = ({
   name,
@@ -33,6 +34,7 @@ const TabBarIcon = ({
   );
 };
 const _Layout = () => {
+  const insets = useSafeAreaInsets();
   return (
     <Tabs
       screenOptions={{
@@ -47,8 +49,8 @@ const _Layout = () => {
           backgroundColor: "#0f0D23",
           borderRadius: 50,
           marginHorizontal: 20,
-          marginBottom: 26,
-          height: 52,
+          marginBottom: 26 + insets.bottom,
+          height: 52 + insets.bottom,
           position: "absolute",
           overflow: "hidden",
           borderWidth: 1,

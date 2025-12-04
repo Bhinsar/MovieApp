@@ -7,11 +7,13 @@ const SearchBar = ({
   placeholder,
   value,
   onChangeText,
+  autoFocus,
 }: {
   onPress?: () => void;
   placeholder: string;
   value?: string;
   onChangeText?: (text: string) => void;
+  autoFocus?: boolean;
 }) => {
   return (
     <TouchableOpacity
@@ -32,6 +34,7 @@ const SearchBar = ({
         value={value}
         onChangeText={onChangeText}
         editable={!onPress}
+        autoFocus={autoFocus}
       />
     </TouchableOpacity>
   );
