@@ -4,55 +4,31 @@
     "slug": "MovieApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/logo.png",
     "scheme": "movies",
     "userInterfaceStyle": "automatic",
     "backgroundColor": "#030014",
     "newArchEnabled": true,
+
     "splash": {
       "image": "./assets/images/logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#030014"
     },
+
     "ios": {
       "supportsTablet": true
     },
+
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#030014",
-        "foregroundImage": "./assets/images/logo.png"
+        "backgroundColor": "#030014"
       },
       "package": "com.anonymous.MovieApp"
     },
+
     "web": {
       "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/logo.png"
-    },
-    "plugins": [
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/logo.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#030014",
-          "dark": {
-            "backgroundColor": "#030014"
-          }
-        }
-      ]
-    ],
-    "experiments": {
-      "typedRoutes": true,
-      "reactCompiler": true
-    },
-    "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "900cccd3-72be-4308-aff3-4b71944a660b"
-      }
+      "output": "static"
     }
   }
 }

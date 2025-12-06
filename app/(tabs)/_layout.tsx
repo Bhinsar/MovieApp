@@ -2,8 +2,12 @@ import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
 import { Tabs } from "expo-router";
 import React from "react";
-import { Image, ImageBackground, Text, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Image, ImageBackground, StatusBar, Text, View } from "react-native";
+import {
+  SafeAreaProvider,
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 
 const TabBarIcon = ({
   name,
@@ -36,69 +40,82 @@ const TabBarIcon = ({
 const _Layout = () => {
   const insets = useSafeAreaInsets();
   return (
-    <Tabs
-      screenOptions={{
-        tabBarShowLabel: false,
-        tabBarItemStyle: {
-          width: "100%",
-          height: "100%",
-          justifyContent: "center",
-          alignItems: "center",
-        },
-        tabBarStyle: {
-          backgroundColor: "#0f0D23",
-          borderRadius: 50,
-          marginHorizontal: 20,
-          marginBottom: 26 + insets.bottom,
-          height: 52 + insets.bottom,
-          position: "absolute",
-          overflow: "hidden",
-          borderWidth: 1,
-          borderColor: "#0f0D23",
-        },
-      }}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Home",
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <TabBarIcon name="Home" icon={icons.home} focused={focused} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="search"
-        options={{
-          title: "Search",
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <TabBarIcon name="Search" icon={icons.search} focused={focused} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="saved"
-        options={{
-          title: "Saved",
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <TabBarIcon name="Saved" icon={icons.save} focused={focused} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="profile"
-        options={{
-          title: "Profile",
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <TabBarIcon name="Profile" icon={icons.person} focused={focused} />
-          ),
-        }}
-      />
-    </Tabs>
+    <SafeAreaProvider>
+      <StatusBar />
+      <SafeAreaView className="flex-1">
+        <Tabs
+          screenOptions={{
+            tabBarShowLabel: false,
+            tabBarItemStyle: {
+              width: "100%",
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+            },
+            tabBarStyle: {
+              backgroundColor: "#0f0D23",
+              borderRadius: 50,
+              marginHorizontal: 20,
+              marginBottom: 26 + insets.bottom,
+              height: 52 + insets.bottom,
+              position: "absolute",
+              overflow: "hidden",
+              borderWidth: 1,
+              borderColor: "#0f0D23",
+            },
+          }}
+        >
+          <Tabs.Screen
+            name="index"
+            options={{
+              title: "Home",
+              headerShown: false,
+              tabBarIcon: ({ focused }) => (
+                <TabBarIcon name="Home" icon={icons.home} focused={focused} />
+              ),
+            }}
+          />
+          <Tabs.Screen
+            name="search"
+            options={{
+              title: "Search",
+              headerShown: false,
+              tabBarIcon: ({ focused }) => (
+                <TabBarIcon
+                  name="Search"
+                  icon={icons.search}
+                  focused={focused}
+                />
+              ),
+            }}
+          />
+          <Tabs.Screen
+            name="saved"
+            options={{
+              title: "Saved",
+              headerShown: false,
+              tabBarIcon: ({ focused }) => (
+                <TabBarIcon name="Saved" icon={icons.save} focused={focused} />
+              ),
+            }}
+          />
+          <Tabs.Screen
+            name="profile"
+            options={{
+              title: "Profile",
+              headerShown: false,
+              tabBarIcon: ({ focused }) => (
+                <TabBarIcon
+                  name="Profile"
+                  icon={icons.person}
+                  focused={focused}
+                />
+              ),
+            }}
+          />
+        </Tabs>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 

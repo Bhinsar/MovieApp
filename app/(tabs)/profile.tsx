@@ -31,7 +31,10 @@ const Profile = () => {
       <View className="flex-row justify-between items-center px-5 mt-5">
         <Text className="text-white text-2xl font-bold">Profile</Text>
       </View>
-      <ScrollView contentContainerStyle={{ paddingBottom: 30 }}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 30 }}
+      >
         {/* User Info */}
         <View className="flex items-center mt-5">
           <View className="size-24 rounded-full border-2 border-accent justify-center items-center overflow-hidden">
