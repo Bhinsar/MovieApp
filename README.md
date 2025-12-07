@@ -1,50 +1,95 @@
-# Welcome to your Expo app 👋
+# 🎬 Movie App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> A modern, responsive movie discovery application built with React Native, Expo, and NativeWind.
 
-## Get started
+![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Expo](https://img.shields.io/badge/Expo-1B1F23?style=for-the-badge&logo=expo&logoColor=white)
+![NativeWind](https://img.shields.io/badge/NativeWind-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Appwrite](https://img.shields.io/badge/Appwrite-FD366E?style=for-the-badge&logo=appwrite&logoColor=white)
 
-1. Install dependencies
+## ✨ Features
 
-   ```bash
-   npm install
-   ```
+- 📈 **Trending Movies**: Real-time trending list based on community searches.
+- 🔍 **Search**: Powerful search functionality to find your favorite movies.
+- 📝 **Details**: View comprehensive movie details, including ratings, release dates, and posters.
+- 💾 **Save/Favorite**: Bookmark movies to your personal list for later viewing.
+- 📱 **Responsive Design**: Beautifully crafted UI that works seamlessly on both Android and iOS.
 
-2. Start the app
+## 🛠️ Tech Stack
 
-   ```bash
-   npx expo start
-   ```
+- **Frontend**: [React Native](https://reactnative.dev/), [Expo](https://expo.dev/)
+- **Routing**: [Expo Router](https://docs.expo.dev/router/introduction/)
+- **Styling**: [NativeWind](https://www.nativewind.dev/) (Tailwind CSS for React Native)
+- **Backend Data**: [Appwrite](https://appwrite.io/) (Database & Realtime)
+- **Movie API**: [TMDB](https://www.themoviedb.org/) (The Movie Database)
 
-In the output, you'll find options to open the app in a
+## 🚀 Getting Started
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Follow these steps to set up the project locally.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Prerequisites
 
-## Get a fresh project
+- [Node.js](https://nodejs.org/) installed.
+- [Expo Go](https://expo.dev/go) app on your physical device, or an Android/iOS emulator.
 
-When you're ready, run:
+### Installation
+
+1.  **Clone the repository** (if applicable) or navigate to the project directory.
+
+2.  **Install dependencies**:
+
+    ```bash
+    npm install
+    ```
+
+3.  **Environment Setup**:
+
+    Create a `.env` file in the root directory by copying the example:
+
+    ```bash
+    cp .env.example .env
+    ```
+
+    Fill in your API keys in the `.env` file:
+
+    ```env
+    EXPO_PUBLIC_MOVIE_API_KEY=your_tmdb_api_key
+    EXPO_PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+    EXPO_PUBLIC_APPWRITE_PROJECT_ID=your_project_id
+    EXPO_PUBLIC_DATABASE_ID=your_database_id
+    EXPO_PUBLIC_COLLECTION_ID=your_collection_id
+    ```
+
+### Running the App
+
+Start the development server:
 
 ```bash
-npm run reset-project
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- Scan the QR code with **Expo Go** (Android) or the Camera app (iOS).
+- Press `a` to run on Android Emulator.
+- Press `i` to run on iOS Simulator.
 
-## Learn more
+## 📂 Project Structure
 
-To learn more about developing your project with Expo, look at the following resources:
+```
+e:\MovieApp\
+├── 📂 app/                 # Screens and Navigation (Expo Router)
+│   ├── (tabs)/            # Main tab navigation
+│   └── movies/            # Movie specific routes
+├── 📂 components/          # Reusable UI components
+├── 📂 services/            # API services (TMDB, Appwrite)
+├── 📂 hook/                # Custom React Hooks
+├── 📂 assets/              # Images and fonts
+└── 📄 package.json         # Project dependencies
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 🤝 Contributing
 
-## Join the community
+Contributions are welcome! Feel free to open issues or submit pull requests.
 
-Join our community of developers creating universal apps.
+## 📄 License
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This project is open source and available under the [MIT License](LICENSE).

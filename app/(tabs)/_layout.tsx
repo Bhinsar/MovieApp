@@ -38,7 +38,6 @@ const TabBarIcon = ({
   );
 };
 const _Layout = () => {
-  const insets = useSafeAreaInsets();
   return (
     <SafeAreaProvider>
       <StatusBar />
@@ -56,8 +55,8 @@ const _Layout = () => {
               backgroundColor: "#0f0D23",
               borderRadius: 50,
               marginHorizontal: 20,
-              marginBottom: 26 + insets.bottom,
-              height: 52 + insets.bottom,
+              marginBottom: 26,
+              height: 52,
               position: "absolute",
               overflow: "hidden",
               borderWidth: 1,
